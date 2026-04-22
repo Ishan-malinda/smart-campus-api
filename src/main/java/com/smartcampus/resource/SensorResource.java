@@ -44,6 +44,14 @@ public class SensorResource {
     @POST
     public Response createSensor(Sensor sensor) {
 
+        // Handle null body
+        if (sensor == null) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Request body is required");
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(error).build();
+        }
+
         // Basic validation
         if (sensor.getId() == null || sensor.getId().trim().isEmpty()) {
             Map<String, String> error = new HashMap<>();

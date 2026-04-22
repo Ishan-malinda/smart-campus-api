@@ -35,6 +35,14 @@ public class RoomResource {
     @POST
     public Response createRoom(Room room) {
 
+        // Handle null body
+        if (room == null) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Request body is required");
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(error).build();
+        }
+
         // Validate - id and name required
         if (room.getId() == null || room.getId().trim().isEmpty()) {
             Map<String, String> error = new HashMap<>();

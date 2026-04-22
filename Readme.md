@@ -98,7 +98,7 @@ smart-campus-api/
 ### Step 1 — Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/smart-campus-api.git
+git clone https://github.com/Ishan-malinda/smart-campus-api.git
 cd smart-campus-api
 ```
 

@@ -50,6 +50,10 @@ public class SensorReadingResource {
 
         Sensor sensor = DataStore.sensors.get(sensorId);
 
+        if (sensor == null) {
+            throw new com.smartcampus.exception.SensorNotFoundException(sensorId);
+        }
+
         // MAINTENANCE sensor - 403 Forbidden!
         if ("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())) {
             throw new SensorUnavailableException(sensorId);
